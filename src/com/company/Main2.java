@@ -16,6 +16,22 @@ public class Main2 {
         else
             System.out.println("Good bye");
 
+        int a = 10;
+        while(a <15){
+            System.out.println("a is:" + a);
+            a = a + 1;
+        }
+        System.out.println("while is over");
+
+        while(true){
+            if(a>15){
+                break;
+            }
+            a=a+1;
+            System.out.println("a is:" + a);
+        }
+
+
 
     }
 }
