@@ -5,7 +5,6 @@ package com.company;
  */
 public class Main2 {
     public static void main(String[] args) {
-        //System.out.println(args[0]);
              if (args[0].equals("Hello"))
             System.out.println("Class");
             else
@@ -30,8 +29,5 @@ public class Main2 {
             a=a+1;
             System.out.println("a is:" + a);
         }
-
-
-
     }
 }
