@@ -9,7 +9,7 @@ public class TestClass {
     }
     public void update()
     {
-        System.out.print("Goodbye World");{
+        System.out.println("Goodbye World");{
     }
     }
 
