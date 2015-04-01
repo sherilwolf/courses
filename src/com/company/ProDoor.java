@@ -34,7 +34,7 @@ public class ProDoor {
     }
 
     public boolean isClosed() {
-        if (isOpened = false) {
+        if (isOpened == false) {
 
         } else{
             isOpened = true;
@@ -44,7 +44,7 @@ public class ProDoor {
     }
 
 
-    public boolean isLocked() {
+    public boolean isLocked( ) {
         return isLocked;
     }
 

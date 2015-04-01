@@ -1,7 +1,13 @@
 package com.company;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ann on 27.03.2015.
@@ -24,8 +30,25 @@ public class Main3 {
         WebDriver h = new ChromeDriver();
         h.manage().window().maximize();
         h.get("http://google.com");
-        //Thread.sleep(5000); pause
-        h.quit();
+        System.out.println(h.getTitle());
+        WebElement s = h.findElement(By.name("q"));
+        s.sendKeys("qa factory");
+        s.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
+        WebElement rso = h.findElement(By.id("rso"));
+        WebElement f = rso.findElement(By.tagName("a"));
+        System.out.println(f.getText());
+        List<WebElement> as = rso.findElements(By.tagName("a"));
+        for (int y = 0; y < as.size(); y++){
+            WebElement cur = as.get(y);
+            System.out.println(cur.getText());
+            System.out.println(as.get(y).getAttribute("href"));
+        }
+        s.clear();
+        s.sendKeys("angel sha1");
+        h.findElement(By.name("btnG")).click();
+
+        //h.quit();
 
         //make class
         Door K = new Door(100);
@@ -48,6 +71,8 @@ public class Main3 {
         d = L.height;
         K.isOpened = true;
         K.print();
+
+
 
     }
 }
