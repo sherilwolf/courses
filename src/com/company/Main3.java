@@ -19,13 +19,13 @@ public class Main3 {
         }
 
         //open chrome
-        /*System.setProperty("webdriver.chrome.driver",
+        System.setProperty("webdriver.chrome.driver",
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         WebDriver h = new ChromeDriver();
         h.manage().window().maximize();
         h.get("http://google.com");
         //Thread.sleep(5000); pause
-        h.quit();*/
+        h.quit();
 
         //make class
         Door K = new Door(100);

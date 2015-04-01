@@ -1,7 +1,5 @@
 package com.company;
 
-import org.apache.xpath.SourceTree;
-
 /**
  * Created by Admin on 30.03.15.
  */
@@ -9,6 +7,7 @@ import org.apache.xpath.SourceTree;
 public class Door {
     public int height;
     public boolean isOpened;
+
     public Door(int h){
         height = h;
         isOpened = false;
