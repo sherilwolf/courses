@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Ann on 27.03.2015.
  */
-public class Main123 {
+public class MainHome123 {
     public static void main(String[] args){
 // Зеленым цветом выделен вывод в консоль в результате выполнения кода.
         int n = 10;

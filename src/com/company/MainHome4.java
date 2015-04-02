@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Ann on 31.03.2015.
  */
-public class Main1234 {
+public class MainHome4 {
     public static void main(String[] args) {
         String t = "Hello Class";
         System.out.println(t);
