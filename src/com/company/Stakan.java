@@ -21,7 +21,7 @@ public class Stakan {
         procentZapolneniia = procentZapolneniia + nalit;
         if (procentZapolneniia > 100){
             procentZapolneniia = 100;
-            System.out.println("Super perepolnen. Lishnee vylilos.");
+            System.out.println(imia + " perepolnen. Lishnee vylilos.");
         }
     }
     public int vylit(){
