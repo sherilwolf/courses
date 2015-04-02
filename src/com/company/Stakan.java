@@ -32,9 +32,9 @@ public class Stakan {
     public String imia(){
         return imia;
     }
-    public static int obiom(int obiom){
+    public static int obiom(int vysota){
 
-        obiom = vysota * 20;
+        int obiom = vysota * 20;
         return obiom;
     }
 }
