@@ -34,17 +34,10 @@ public class ProDoor {
     }
 
     public boolean isClosed() {
-        if (isOpened == false) {
-
-        } else{
-            isOpened = true;
-        }
-
-        return true;
+        return !isOpened;
     }
 
-
-    public boolean isLocked( ) {
+    public boolean isLocked() {
         return isLocked;
     }
 
@@ -53,15 +46,24 @@ public class ProDoor {
     }
 
     public void close(){
-
-
-    }
+        if (isLocked){
+            System.out.println("Lock is in the way. Cannot close!");
+            isOpened = true;
+        } else{
+            isOpened = false;
+        }
+}
 
     public void unlock(){
-
+        isLocked = false;
     }
 
     public void open(){
-        System.out.println("Door is locked. Cannot open!");
+        if (isLocked){
+            System.out.println("Door is locked. Cannot open!");
+            isOpened = false;
+        } else{
+            isOpened = true;
+        }
     }
 }
