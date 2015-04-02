@@ -13,12 +13,10 @@ public class Main1234 {
         System.out.println(t + ts);
 // Hello Class, and Student!
 
-        int[] u = {0, 1, 2, 3, 4, 5};
+        String[] u = {"0", "1", "Under key one but three", "3", "4", "Under key five"};
         System.out.println(u[5]);
 // Under key five
-
-        int[] uu = {0, 1, 2, 3, 4, 5};
-        System.out.println(uu[3-1]);
+        System.out.println(u[3-1]);
 // Under key one but three
 
         for (int x = 8; x < 11; x++) {

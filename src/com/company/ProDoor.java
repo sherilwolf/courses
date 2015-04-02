@@ -48,8 +48,8 @@ public class ProDoor {
     public void close(){
         if (isLocked){
             System.out.println("Lock is in the way. Cannot close!");
-            isOpened = true;
-        } else{
+            //isOpened = true;
+        } else {
             isOpened = false;
         }
 }
@@ -61,8 +61,8 @@ public class ProDoor {
     public void open(){
         if (isLocked){
             System.out.println("Door is locked. Cannot open!");
-            isOpened = false;
-        } else{
+            //isOpened = false;
+        } else {
             isOpened = true;
         }
     }
