@@ -3,15 +3,12 @@ package com.company;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.security.Key;
 
 /**
  * Created by Ann on 02.04.2015.
  */
-public class Main4 {
+public class Main6 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver",
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
