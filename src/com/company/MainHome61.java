@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Ann on 08.04.2015.
  */
-public class Main61 {
+public class MainHome61 {
     public static void main(String[] args) {
         if (func1(5).equals("150")) {
             System.out.println("Test Passed!");
