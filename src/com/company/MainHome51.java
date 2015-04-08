@@ -2,6 +2,7 @@ package com.company;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -67,11 +68,10 @@ public class MainHome51 {
     }
 
     public static boolean isEqual(String[] a, List<String> s) {
-        if (a.length == s.size()) {
-            for (int i = 0; i < a.length; i++)
-                if (a[i].equals(s.get(i)))
-                    return true;
-        }
+        if (Arrays.asList(a).equals(s)) {
+            return true;
+        } else {
             return false;
+        }
     }
 }
