@@ -48,9 +48,8 @@ public class MainHome6 {
         }
         return r;
     }
-    public static String doubleAndPrint(String s){
+    public static void doubleAndPrint(String s){
         System.out.println(s + s);
-        return s;
     }
     public static String multiply(int j, String s) {
         String r = "";
