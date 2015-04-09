@@ -28,8 +28,7 @@ public class MainHome61 {
     }
 
     // Fix the folowing functions so the main tests pass.
-    public static String func3(int u, int p) {
-        return "" + (u * (p - 1));
+    public static String func3(int u, int p) { return "" + (u * p);
     }
 
     public static String func1(int y) {
