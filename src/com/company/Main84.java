@@ -59,7 +59,6 @@ public class Main84 {
         generate();
         String pwd = getPassword();
         Assert.assertEquals("BaefBs8/Z/cm2@1a", pwd);
-
     }
     @Test
     public void test5(){
@@ -96,19 +95,26 @@ public class Main84 {
     @Test
     public void test9(){
         setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+        setSite("1111111");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
+        Assert.assertEquals("1111111", driver.findElement(By.name("site")).getAttribute("value"));
     }
     @Test
     public void test10(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
     }
     @Test
     public void test11(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+    }
+    @Test
+    public void test12(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();

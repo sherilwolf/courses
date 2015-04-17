@@ -59,7 +59,6 @@ public class Main83 {
         generate();
         String pwd = getPassword();
         Assert.assertEquals("BaefBs8/Z/cm2@1a", pwd);
-
     }
     @Test
     public void test5(){
@@ -96,6 +95,13 @@ public class Main83 {
     @Test
     public void test9(){
         setMaster("!@#$%^&*");
+        setSite("1111111");
+        generate();
+        Assert.assertEquals("1111111", driver.findElement(By.name("site")).getAttribute("value"));
+    }
+    @Test
+    public void test10(){
+        setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
         Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
@@ -118,4 +124,3 @@ public class Main83 {
         return driver.findElements(By.tagName("input")).get(2).getAttribute("value");
     }
 }
-

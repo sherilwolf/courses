@@ -62,7 +62,6 @@ public class Main85 {
         generate();
         String pwd = getPassword();
         Assert.assertEquals("BaefBs8/Z/cm2@1a", pwd);
-
     }
     @Test
     public void test5(){
@@ -99,38 +98,45 @@ public class Main85 {
     @Test
     public void test9(){
         setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+        setSite("1111111");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
+        Assert.assertEquals("1111111", driver.findElement(By.name("site")).getAttribute("value"));
     }
     @Test
     public void test10(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
     }
     @Test
     public void test11(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("password")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
     }
     @Test
     public void test12(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("password")).isEnabled());
+    }
+    @Test
+    public void test13(){
         List<WebElement> list = driver.findElements(By.tagName("td"));
         String s = list.get(0).getText();
         Assert.assertEquals("Your master password", s);
     }
     @Test
-    public void test13(){
+    public void test14(){
         List<WebElement> list = driver.findElements(By.tagName("td"));
         String s = list.get(2).getText();
         Assert.assertEquals("Site name", s);
     }
     @Test
-    public void test14(){
+    public void test15(){
         List<WebElement> list = driver.findElements(By.tagName("td"));
         String s = list.get(5).getText();
         Assert.assertEquals("Generated password", s);

@@ -59,7 +59,6 @@ public class Main8 {
         generate();
         String pwd = getPassword();
         Assert.assertEquals("BaefBs8/Z/cm2@1a", pwd);
-
     }
     @Test
     public void test5(){
