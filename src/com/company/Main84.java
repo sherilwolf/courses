@@ -12,22 +12,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Created by Admin on 15.04.15.
+ * Created by Ann on 16.04.2015.
  */
 @RunWith(JUnit4.class)
-public class Main81 {
+public class Main84 {
     public WebDriver driver;
     @After
     public void clean(){
         driver.quit();
     }
     @Before
-    public void befor(){
+    public void before(){
         System.setProperty("webdriver.chrome.driver",
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://oxogamestudio.com/passwd.current2.htm");
+        driver.get("http://oxogamestudio.com/passwd.current4.htm");
     }
 
     @Test
@@ -86,28 +86,49 @@ public class Main81 {
         String res = button();
         Assert.assertEquals("Generate", res);
     }
-
+    @Test
+    public void test8(){
+        setMaster("!@#$%^&*");
+        setSite("1111111");
+        generate();
+        Assert.assertEquals("!@#$%^&*", driver.findElement(By.name("master")).getAttribute("value"));
+    }
+    @Test
+    public void test9(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
+    }
+    @Test
+    public void test10(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+    }
+    @Test
+    public void test11(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("password")).isEnabled());
+    }
     public void setMaster(String m){
         driver.findElement(By.name("master")).clear();
         driver.findElement(By.name("master")).sendKeys(m);
     }
-
     public void setSite(String s){
         driver.findElement(By.name("site")).clear();
         driver.findElement(By.name("site")).sendKeys(s);
     }
-
     public void generate(){
         driver.findElement(By.name("site")).sendKeys(Keys.ENTER);
     }
-
     public String getPassword(){
         return driver.findElement(By.name("password")).getAttribute("value");
     }
     public String button(){
         return driver.findElements(By.tagName("input")).get(2).getAttribute("value");
     }
-
-
-
 }

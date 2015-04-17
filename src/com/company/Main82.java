@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * Created by Admin on 15.04.15.
  */
 @RunWith(JUnit4.class)
-public class Main8 {
+public class Main82 {
     public WebDriver driver;
     @After
     public void clean(){
@@ -27,7 +27,7 @@ public class Main8 {
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://angel.net/~nic/passwd.current.html");
+        driver.get("http://oxogamestudio.com/passwd.current2.htm");
     }
 
     @Test
@@ -83,8 +83,15 @@ public class Main8 {
     }
     @Test
     public void test7(){
-        String s = button();
-        Assert.assertEquals("Generate", s);
+        String res = button();
+        Assert.assertEquals("Generate", res);
+    }
+@Test
+    public void test8(){
+    setMaster("!@#$%^&*");
+    setSite("1111111");
+    generate();
+    Assert.assertEquals("!@#$%^&*", driver.findElement(By.name("master")).getAttribute("value"));
     }
     public void setMaster(String m){
         driver.findElement(By.name("master")).clear();

@@ -9,13 +9,16 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 /**
- * Created by Admin on 15.04.15.
+ * Created by Ann on 17.04.2015.
  */
 @RunWith(JUnit4.class)
-public class Main8 {
+public class Main85 {
     public WebDriver driver;
     @After
     public void clean(){
@@ -27,7 +30,7 @@ public class Main8 {
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://angel.net/~nic/passwd.current.html");
+        driver.get("http://oxogamestudio.com/passwd.current5.htm");
     }
 
     @Test
@@ -83,8 +86,54 @@ public class Main8 {
     }
     @Test
     public void test7(){
-        String s = button();
-        Assert.assertEquals("Generate", s);
+        String res = button();
+        Assert.assertEquals("Generate", res);
+    }
+    @Test
+    public void test8(){
+        setMaster("!@#$%^&*");
+        setSite("1111111");
+        generate();
+        Assert.assertEquals("!@#$%^&*", driver.findElement(By.name("master")).getAttribute("value"));
+    }
+    @Test
+    public void test9(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
+    }
+    @Test
+    public void test10(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+    }
+    @Test
+    public void test11(){
+        setMaster("!@#$%^&*");
+        setSite("!@#$%^&*");
+        generate();
+        Assert.assertEquals(true, driver.findElement(By.name("password")).isEnabled());
+    }
+    @Test
+    public void test12(){
+        List<WebElement> list = driver.findElements(By.tagName("td"));
+        String s = list.get(0).getText();
+        Assert.assertEquals("Your master password", s);
+    }
+    @Test
+    public void test13(){
+        List<WebElement> list = driver.findElements(By.tagName("td"));
+        String s = list.get(2).getText();
+        Assert.assertEquals("Site name", s);
+    }
+    @Test
+    public void test14(){
+        List<WebElement> list = driver.findElements(By.tagName("td"));
+        String s = list.get(5).getText();
+        Assert.assertEquals("Generated password", s);
     }
     public void setMaster(String m){
         driver.findElement(By.name("master")).clear();
