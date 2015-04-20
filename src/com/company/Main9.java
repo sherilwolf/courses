@@ -15,10 +15,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 /**
- * Created by Ann on 17.04.2015.
+ * Created by Admin on 20.04.15.
  */
+
 @RunWith(JUnit4.class)
-public class Main87 {
+public class Main9 {
     public WebDriver driver;
     @After
     public void clean(){
@@ -30,7 +31,8 @@ public class Main87 {
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://oxogamestudio.com/passwd.current5.htm");
+        //driver.get("http://oxogamestudio.com/passwd.current6.htm");
+        driver.get("http://oxogamestudio.com/passwd.current7.htm");
     }
 
     @Test
@@ -93,69 +95,69 @@ public class Main87 {
         setMaster("!@#$%^&*");
         setSite("1111111");
         generate();
-        Assert.assertEquals("!@#$%^&*", driver.findElement(By.name("master")).getAttribute("value"));
+        Assert.assertEquals("!@#$%^&*", driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).getAttribute("value"));
     }
     @Test
     public void test9(){
         setMaster("!@#$%^&*");
         setSite("1111111");
         generate();
-        Assert.assertEquals("1111111", driver.findElement(By.name("site")).getAttribute("value"));
+        Assert.assertEquals("1111111", driver.findElement(By.xpath("//td[text()='Site name']/following::input")).getAttribute("value"));
     }
     @Test
     public void test10(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("master")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).isEnabled());
     }
     @Test
     public void test11(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("site")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Site name']/following::input")).isEnabled());
     }
     @Test
     public void test12(){
         setMaster("!@#$%^&*");
         setSite("!@#$%^&*");
         generate();
-        Assert.assertEquals(true, driver.findElement(By.name("password")).isEnabled());
+        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).isEnabled());
     }
     @Test
-    public void test13(){
-        List<WebElement> list = driver.findElements(By.tagName("td"));
-        String s = list.get(0).getText();
+    public void test13() {
+        WebElement list = driver.findElement(By.xpath("//td[text()='Your master password']"));
+        String s = list.getText();
         Assert.assertEquals("Your master password", s);
     }
     @Test
     public void test14(){
-        List<WebElement> list = driver.findElements(By.tagName("td"));
-        String s = list.get(2).getText();
+        WebElement list = driver.findElement(By.xpath("//td[text()='Site name']"));
+        String s = list.getText();
         Assert.assertEquals("Site name", s);
     }
     @Test
     public void test15(){
-        List<WebElement> list = driver.findElements(By.tagName("td"));
-        String s = list.get(5).getText();
+        WebElement list = driver.findElement(By.xpath("//td[text()='Generated password']"));
+        String s = list.getText();
         Assert.assertEquals("Generated password", s);
     }
     public void setMaster(String m){
-        driver.findElement(By.name("master")).clear();
-        driver.findElement(By.name("master")).sendKeys(m);
+        driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).clear();
+        driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).sendKeys(m);
     }
     public void setSite(String s){
-        driver.findElement(By.name("site")).clear();
-        driver.findElement(By.name("site")).sendKeys(s);
+        driver.findElement(By.xpath("//td[text()='Site name']/following::input")).clear();
+        driver.findElement(By.xpath("//td[text()='Site name']/following::input")).sendKeys(s);
     }
     public void generate(){
-        driver.findElement(By.name("site")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//td[text()='Site name']/following::input")).sendKeys(Keys.ENTER);
     }
     public String getPassword(){
-        return driver.findElement(By.name("password")).getAttribute("value");
+        return driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).getAttribute("value");
     }
     public String button(){
-        return driver.findElements(By.tagName("input")).get(2).getAttribute("value");
+        return driver.findElement(By.xpath("//input[@type='submit']")).getAttribute("value");
     }
 }
