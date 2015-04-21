@@ -12,8 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
-
 /**
  * Created by Admin on 20.04.15.
  */
@@ -127,22 +125,23 @@ public class Main9 {
     }
     @Test
     public void test13() {
-        WebElement list = driver.findElement(By.xpath("//td[text()='Your master password']"));
-        String s = list.getText();
+        WebElement td = driver.findElement(By.xpath("//td[text()='Your master password']"));
+        String s = td.getText();
         Assert.assertEquals("Your master password", s);
     }
     @Test
     public void test14(){
-        WebElement list = driver.findElement(By.xpath("//td[text()='Site name']"));
-        String s = list.getText();
+        WebElement td = driver.findElement(By.xpath("//td[text()='Site name']"));
+        String s = td.getText();
         Assert.assertEquals("Site name", s);
     }
     @Test
     public void test15(){
-        WebElement list = driver.findElement(By.xpath("//td[text()='Generated password']"));
-        String s = list.getText();
+        WebElement td = driver.findElement(By.xpath("//td[text()='Generated password']"));
+        String s = td.getText();
         Assert.assertEquals("Generated password", s);
     }
+    
     public void setMaster(String m){
         driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).clear();
         driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).sendKeys(m);
@@ -160,4 +159,5 @@ public class Main9 {
     public String button(){
         return driver.findElement(By.xpath("//input[@type='submit']")).getAttribute("value");
     }
+
 }
