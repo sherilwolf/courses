@@ -13,11 +13,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Created by Admin on 20.04.15.
+ * Created by Ann on 21.04.2015.
  */
-
 @RunWith(JUnit4.class)
-public class Main9 {
+public class Main91 {
     public WebDriver driver;
     @After
     public void clean(){
@@ -30,96 +29,109 @@ public class Main9 {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //driver.get("http://oxogamestudio.com/passwd.current6.htm");
-        driver.get("http://oxogamestudio.com/passwd.current7.htm");
+        //driver.get("http://oxogamestudio.com/passwd.current7.htm");
+        driver.get("http://oxogamestudio.com/passwd.current8.htm");
     }
 
     @Test
-    public void test1(){
-        setMaster("12345678");
-        setSite("gmail.com");
+    public void test1() throws InterruptedException {
+        setField("Your master password", "12345678");
+        setField("Site name", "gmail.com");
+        waitButton();
         generate();
-        String  pwd = getPassword();
+        waitPassword();
+        String pwd = getField("Generated password");
         Assert.assertEquals("W3Hdka0clbEI+@1a", pwd);
     }
     @Test
-    public void test2(){
-        setMaster("");
-        setSite("gmail.com");
+    public void test2() throws InterruptedException {
+        setField("Your master password", "");
+        setField("Site name", "gmail.com");
+        waitButton();
         generate();
-        String  pwd = getPassword();
+        waitPassword();
+        String pwd = getField("Generated password");
         Assert.assertEquals("zmcHOAyf2oZm+@1a", pwd);
     }
     @Test
-    public void test3(){
-        setMaster("12345678");
-        setSite("");
+    public void test3() throws InterruptedException {
+        setField("Your master password", "12345678");
+        setField("Site name", "");
+        waitButton();
         generate();
-        String  pwd = getPassword();
+        waitPassword();
+        String pwd = getField("Generated password");
         Assert.assertEquals("9Ixm2r5Xnm41Q@1a", pwd);
     }
     @Test
-    public void test4(){
+    public void test4() throws InterruptedException {
+        waitButton();
         generate();
-        String pwd = getPassword();
+        waitPassword();
+        String pwd = getField("Generated password");
         Assert.assertEquals("BaefBs8/Z/cm2@1a", pwd);
     }
     @Test
-    public void test5(){
+    public void test5() throws InterruptedException {
         String s = "";
         for (int i = 0; i < 200; i++) {
             s = s + 1;
         }
-        setMaster(s);
-        setSite(s);
+        setField("Your master password", s);
+        waitButton();
         generate();
-        String pwd = getPassword();
-        Assert.assertEquals("aR8ztwNBbSqe5@1a", pwd);
+        waitPassword();
+        String pwd = getField("Generated password");
+        Assert.assertEquals("/nYu7j9eFh1Da@1a", pwd);
     }
     @Test
-    public void test6(){
-        setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+    public void test6() throws InterruptedException {
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "!@#$%^&*");
+        waitButton();
         generate();
-        String pwd = getPassword();
+        waitPassword();
+        String pwd = getField("Generated password");
         Assert.assertEquals("UZ8lLGSKoFxUd@1a", pwd);
     }
     @Test
-    public void test7(){
+    public void test7() throws InterruptedException {
+        waitButton();
         String res = button();
         Assert.assertEquals("Generate", res);
     }
     @Test
     public void test8(){
-        setMaster("!@#$%^&*");
-        setSite("1111111");
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "1111111");
         generate();
         Assert.assertEquals("!@#$%^&*", driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).getAttribute("value"));
     }
     @Test
     public void test9(){
-        setMaster("!@#$%^&*");
-        setSite("1111111");
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "1111111");
         generate();
         Assert.assertEquals("1111111", driver.findElement(By.xpath("//td[text()='Site name']/following::input")).getAttribute("value"));
     }
     @Test
     public void test10(){
-        setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "!@#$%^&*");
         generate();
         Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).isEnabled());
     }
     @Test
     public void test11(){
-        setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "!@#$%^&*");
         generate();
         Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Site name']/following::input")).isEnabled());
     }
     @Test
     public void test12(){
-        setMaster("!@#$%^&*");
-        setSite("!@#$%^&*");
+        setField("Your master password", "!@#$%^&*");
+        setField("Site name", "!@#$%^&*");
         generate();
         Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).isEnabled());
     }
@@ -141,21 +153,29 @@ public class Main9 {
         String s = td.getText();
         Assert.assertEquals("Generated password", s);
     }
-    public void setMaster(String m){
-        driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).clear();
-        driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).sendKeys(m);
+    public void setField(String fieldName, String fieldValue){
+        WebElement field = driver.findElement(By.xpath("//td[text()='" + fieldName + "']/following::input"));
+        field.clear();
+        field.sendKeys(fieldValue);
     }
-    public void setSite(String s){
-        driver.findElement(By.xpath("//td[text()='Site name']/following::input")).clear();
-        driver.findElement(By.xpath("//td[text()='Site name']/following::input")).sendKeys(s);
+    public String getField(String fieldName){
+        String field = driver.findElement(By.xpath("//td[text()='" + fieldName + "']/following::input")).getAttribute("value");
+        return field;
     }
     public void generate(){
         driver.findElement(By.xpath("//td[text()='Site name']/following::input")).sendKeys(Keys.ENTER);
     }
-    public String getPassword(){
-        return driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).getAttribute("value");
-    }
     public String button(){
         return driver.findElement(By.xpath("//input[@type='submit']")).getAttribute("value");
+    }
+    public void waitPassword() throws InterruptedException {
+        while (driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).getAttribute("value").equals("")){
+            Thread.sleep(200);
+        }
+    }
+    public void waitButton() throws InterruptedException {
+        while (driver.findElements(By.xpath("//input[@type='submit']")).size() <= 0){
+            Thread.sleep(200);
+        }
     }
 }
