@@ -7,24 +7,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * Created by Admin on 22.04.15.
  */
 @RunWith(JUnit4.class)
 public class Main10 {
-    public WebDriver driver;
     @After
     public void clean(){
         TestHelper.driver.quit();
     }
     @Before
     public void before(){
-        GenPassPage.open();
+        TestHelper.init();
     }
 
     @Test
@@ -99,53 +95,52 @@ public class Main10 {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "1111111");
         GenPassPage.generate();
-        Assert.assertEquals("!@#$%^&*", driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).getAttribute("value"));
+        Assert.assertEquals("!@#$%^&*", TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).getAttribute("value"));
     }
     @Test
     public void test9(){
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "1111111");
         GenPassPage.generate();
-        Assert.assertEquals("1111111", driver.findElement(By.xpath("//td[text()='Site name']/following::input")).getAttribute("value"));
+        Assert.assertEquals("1111111", TestHelper.driver.findElement(By.xpath("//td[text()='Site name']/following::input")).getAttribute("value"));
     }
     @Test
     public void test10(){
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
         GenPassPage.generate();
-        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).isEnabled());
+        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).isEnabled());
     }
     @Test
     public void test11(){
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
         GenPassPage.generate();
-        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Site name']/following::input")).isEnabled());
+        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Site name']/following::input")).isEnabled());
     }
     @Test
     public void test12(){
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
         GenPassPage.generate();
-        Assert.assertEquals(true, driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).isEnabled());
+        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).isEnabled());
     }
     @Test
     public void test13() {
-        WebElement td = driver.findElement(By.xpath("//td[text()='Your master password']"));
+        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']"));
         String s = td.getText();
         Assert.assertEquals("Your master password", s);
     }
     @Test
     public void test14(){
-        WebElement td = driver.findElement(By.xpath("//td[text()='Site name']"));
+        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Site name']"));
         String s = td.getText();
         Assert.assertEquals("Site name", s);
     }
     @Test
     public void test15(){
-        WebElement td = driver.findElement(By.xpath("//td[text()='Generated password']"));
+        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']"));
         String s = td.getText();
         Assert.assertEquals("Generated password", s);
     }
-
 }
