@@ -21,6 +21,7 @@ public class Main10 {
     @Before
     public void before(){
         TestHelper.init();
+        GenPassPage.open();
     }
 
     @Test
