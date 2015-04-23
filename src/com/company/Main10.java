@@ -22,7 +22,6 @@ public class Main10 {
     public void before(){
         TestHelper.init();
         GenPassPage.open();
-        m,m,m,m,m
     }
 
     @Test
