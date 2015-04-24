@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 /**
  * Created by Admin on 22.04.15.
@@ -92,56 +90,55 @@ public class Main10 {
         Assert.assertEquals("Generate", res);
     }
     @Test
-    public void test8(){
+    public void test8() throws InterruptedException {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "1111111");
+        GenPassPage.waitButton();
         GenPassPage.generate();
-        Assert.assertEquals("!@#$%^&*", TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).getAttribute("value"));
+        Assert.assertEquals("!@#$%^&*", GenPassPage.getField("Your master password"));
     }
     @Test
-    public void test9(){
+    public void test9() throws InterruptedException {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "1111111");
+        GenPassPage.waitButton();
         GenPassPage.generate();
-        Assert.assertEquals("1111111", TestHelper.driver.findElement(By.xpath("//td[text()='Site name']/following::input")).getAttribute("value"));
+        Assert.assertEquals("1111111", GenPassPage.getField("Site name"));
     }
     @Test
-    public void test10(){
+    public void test10() throws InterruptedException {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
+        GenPassPage.waitButton();
         GenPassPage.generate();
-        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']/following::input")).isEnabled());
+        Assert.assertEquals(true, GenPassPage.isEnabled("Your master password"));
     }
     @Test
-    public void test11(){
+    public void test11() throws InterruptedException {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
+        GenPassPage.waitButton();
         GenPassPage.generate();
-        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Site name']/following::input")).isEnabled());
+        Assert.assertEquals(true, GenPassPage.isEnabled("Site name"));
     }
     @Test
-    public void test12(){
+    public void test12() throws InterruptedException {
         GenPassPage.setField("Your master password", "!@#$%^&*");
         GenPassPage.setField("Site name", "!@#$%^&*");
+        GenPassPage.waitButton();
         GenPassPage.generate();
-        Assert.assertEquals(true, TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).isEnabled());
+        Assert.assertEquals(true, GenPassPage.isEnabled("Generated password"));
     }
     @Test
     public void test13() {
-        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']"));
-        String s = td.getText();
-        Assert.assertEquals("Your master password", s);
+        Assert.assertEquals("Your master password", GenPassPage.getText(0));
     }
     @Test
     public void test14(){
-        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Site name']"));
-        String s = td.getText();
-        Assert.assertEquals("Site name", s);
+        Assert.assertEquals("Site name", GenPassPage.getText(2));
     }
     @Test
     public void test15(){
-        WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']"));
-        String s = td.getText();
-        Assert.assertEquals("Generated password", s);
+        Assert.assertEquals("Generated password", GenPassPage.getText(5));
     }
 }
