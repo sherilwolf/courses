@@ -37,7 +37,7 @@ public class GenPassPage {
         String s = text.get(elementNumber).getText();
         return s;
     }
-    public static String getTextMaster(){
+    /*public static String getTextMaster(){
         WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Your master password']"));
         String s = td.getText();
         return s;
@@ -51,7 +51,7 @@ public class GenPassPage {
         WebElement td = TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']"));
         String s = td.getText();
         return s;
-    }
+    }*/
     public static void waitPassword() throws InterruptedException {
         while (TestHelper.driver.findElement(By.xpath("//td[text()='Generated password']/following::input")).getAttribute("value").equals("")){
             Thread.sleep(200);
