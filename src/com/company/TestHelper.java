@@ -13,7 +13,7 @@ public class TestHelper {
         System.setProperty("webdriver.chrome.driver",
                 "C:/Autom/chromedriver_win32/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=ru");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
