@@ -71,9 +71,8 @@ public class Main11 {
     public void test9() {
         Translate.from("Hello");
         Translate.buttonClear();
-        String res = " ";
-        Assert.assertEquals(res, Translate.rightFieldText());
-        Assert.assertEquals(res, Translate.leftFieldText());
+        Assert.assertEquals("", Translate.rightFieldText());
+        Assert.assertEquals("", Translate.leftFieldText());
     }
     @Test // слева украинский, справа китайский, вводим слева С У! Г С!, проверить перевод
     public void test10() throws InterruptedException {

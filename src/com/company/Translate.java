@@ -26,9 +26,6 @@ public class Translate {
         TestHelper.driver.findElement(By.xpath("//span[@id='result_box']"));
         TestHelper.driver.findElement(By.xpath("//textarea[@id='source']"));
     }
-    public static void checkRightField(){ //тест 4, правое поле пустое
-        TestHelper.driver.findElement(By.xpath("//span[@id='result_box']"));
-    }
     public static void showLanguageLeft(){ //тест 5, нажать на кнопку, чтобы увидеть языки слева
         TestHelper.driver.findElement(By.xpath("//div[@id='gt-sl-gms']")).click();
     }
@@ -64,6 +61,9 @@ public class Translate {
     }
     public static void buttonClear(){
         TestHelper.driver.findElement(By.xpath("//div[@id='gt-clear']/span")).click();
+    }
+    public static void rightFieldClear(String lang){ //тест 8, выбрать язык справа
+        TestHelper.driver.findElement(By.xpath("//div[@id='gt-tl-gms-menu']//div[text()='" + lang + "']")).click();
     }
 
 }
