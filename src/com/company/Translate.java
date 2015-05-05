@@ -41,8 +41,8 @@ public class Translate {
         WebElement sound = TestHelper.driver.findElement(By.xpath("//div[@id='gt-res-listen']/span"));
         return sound.isDisplayed();
     }
-    public static void openLink() { //тест 7, открыть ссылку
-        TestHelper.driver.get("https://translate.google.com/#auto/en/Hello");
+    public static void openLink(String link) { //тест 7, открыть ссылку
+        TestHelper.driver.get(link); //"https://translate.google.com/#auto/en/Hello"
     }
     public  static String leftFieldText(){ //тест 7, проверить, что в правом поле хелллоу
         return TestHelper.driver.findElement(By.xpath("//textarea[@id='source']")).getAttribute("value");
@@ -62,8 +62,16 @@ public class Translate {
     public static void buttonClear(){
         TestHelper.driver.findElement(By.xpath("//div[@id='gt-clear']/span")).click();
     }
-    public static void rightFieldClear(String lang){ //тест 8, выбрать язык справа
-        TestHelper.driver.findElement(By.xpath("//div[@id='gt-tl-gms-menu']//div[text()='" + lang + "']")).click();
+    public static void checkLanguagePressLeft(String lang){
+        TestHelper.driver.findElement(By.xpath("//div[@id='gt-sl-sugg']//div[text()='" + lang + "' and @aria-pressed='true']"));
     }
-
+    public static void checkLanguagePressRight(String lang){
+        TestHelper.driver.findElement(By.xpath("//div[@id='gt-tl-sugg']//div[text()='" + lang + "' and @aria-pressed='true']"));
+    }
+    public static void checkLanguageLeft(String lang){
+        TestHelper.driver.findElement(By.xpath("//div[@id='gt-sl-sugg']//div[text()='" + lang + "']"));
+    }
+    public static void checkLanguageRight(String lang){
+        TestHelper.driver.findElement(By.xpath("//div[@id='gt-tl-sugg']//div[text()='" + lang + "']"));
+    }
 }

@@ -46,25 +46,27 @@ public class Main11 {
         Assert.assertTrue(Translate.isLanguagePresent("словацкий"));
     }
     @Test //ввести хеллоу в левое поле, нажать транслейт, проверить наличие кнопки прослушки
-    public void test6() {
+    public void test6() throws InterruptedException {
         Translate.from("Hello");
         Translate.buttonTranslate();
+        Thread.sleep(400);
         Assert.assertTrue(Translate.isSoundPresentInResult());
     }
     @Test // открыть ссылку https://translate.google.com/#auto/en/Hello, слева Hello, справа перевод
     public void test7() {
-        Translate.openLink();
+        Translate.openLink("https://translate.google.com/#auto/en/Hello");
         Assert.assertEquals("Hello", Translate.leftFieldText());
         Assert.assertEquals("Hello", Translate.rightFieldText());
     }
     @Test // слева  испанский, справа английский, ввести Hello, нажать <>, проверить справа ¡Hola
-    public void test8() {
+    public void test8() throws InterruptedException {
         Translate.showLanguageLeft();
         Translate.changeLanguageLeft("испанский");
         Translate.showLanguageRight();
         Translate.changeLanguageRight("английский");
         Translate.from("Hello");
         Translate.buttonChangeLanguage();
+        Thread.sleep(400);
         Assert.assertEquals("¡Hola", Translate.rightFieldText());
     }
     @Test //слева Hello, нажимаем X, проверяем слева и справа пусто
@@ -74,14 +76,32 @@ public class Main11 {
         Assert.assertEquals("", Translate.rightFieldText());
         Assert.assertEquals("", Translate.leftFieldText());
     }
-    @Test // слева украинский, справа китайский, вводим слева С У! Г С!, проверить перевод
+    @Test // слева украинский, справа китайский, вводим слева С У! \nГ С!, проверить перевод
     public void test10() throws InterruptedException {
         Translate.showLanguageLeft();
         Translate.changeLanguageLeft("украинский");
         Translate.showLanguageRight();
         Translate.changeLanguageRight("китайский (традиционный)");
-        Translate.from("Слава Україні! Героям Слава!");
+        Translate.from("Слава Україні! \nГероям Слава!");
         Thread.sleep(400);
-        Assert.assertEquals("光榮屬於烏克蘭！光榮屬於英雄！", Translate.rightFieldText());
+        Assert.assertEquals("光榮屬於烏克蘭！\n光榮屬於英雄！", Translate.rightFieldText());
     }
+    @Test // открыть ссылку, проверить слева укр, справа яванский, в обоих полях Hello
+    public void test11() {
+        Translate.openLink("https://translate.google.com/#uk/jw/Hello");
+        Translate.checkLanguagePressLeft("украинский");
+        Translate.checkLanguagePressRight("яванский");
+        Assert.assertEquals("Hello", Translate.rightFieldText());
+        Assert.assertEquals("Hello", Translate.leftFieldText());
+    }
+    @Test // проверить быстродоступные кнопки языков слева и справа
+    public void test12() {
+        Translate.checkLanguageLeft("английский");
+        Translate.checkLanguageLeft("русский");
+        Translate.checkLanguageLeft("немецкий");
+        Translate.checkLanguageRight("русский");
+        Translate.checkLanguageRight("английский");
+        Translate.checkLanguageRight("украинский");
+    }
+
 }
