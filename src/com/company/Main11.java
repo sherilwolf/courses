@@ -53,8 +53,9 @@ public class Main11 {
         Assert.assertTrue(Translate.isSoundPresentInResult());
     }
     @Test // открыть ссылку https://translate.google.com/#auto/en/Hello, слева Hello, справа перевод
-    public void test7() {
+    public void test7() throws InterruptedException {
         Translate.openLink("https://translate.google.com/#auto/en/Hello");
+        Thread.sleep(400);
         Assert.assertEquals("Hello", Translate.leftFieldText());
         Assert.assertEquals("Hello", Translate.rightFieldText());
     }
