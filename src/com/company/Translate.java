@@ -11,14 +11,14 @@ import java.nio.charset.Charset;
  */
 public class Translate {
     public static void open(){
-        TestHelper.driver.get("https://translate.google.com/");
+        TestHelper.driver.get("https://translate.google.ru/");
     }
     public static void buttonTranslate(){ //тест 1, нажать кнопку транслейт
         TestHelper.driver.findElement(By.xpath("//input[@type='submit']")).click();
     }
     public  static String rightFieldText(){ //тест 1, проверить, что правое поле пустое
         WebElement rightField = TestHelper.driver.findElement(By.xpath("//span[@id='result_box']"));
-        
+
         String tmp = rightField.getText();
         return new String (tmp.getBytes(Charset.forName("utf-8")));
     }
