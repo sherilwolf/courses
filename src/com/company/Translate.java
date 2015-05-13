@@ -18,7 +18,6 @@ public class Translate {
     }
     public  static String rightFieldText(){ //тест 1, проверить, что правое поле пустое
         WebElement rightField = TestHelper.driver.findElement(By.xpath("//span[@id='result_box']"));
-
         String tmp = rightField.getText();
         return new String (tmp.getBytes(Charset.forName("utf-8")));
     }
