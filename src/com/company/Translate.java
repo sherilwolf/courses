@@ -3,6 +3,8 @@ package com.company;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.nio.charset.Charset;
+
 
 /**
  * Created by Admin on 29.04.15.
@@ -16,7 +18,9 @@ public class Translate {
     }
     public  static String rightFieldText(){ //тест 1, проверить, что правое поле пустое
         WebElement rightField = TestHelper.driver.findElement(By.xpath("//span[@id='result_box']"));
-        return rightField.getText();
+        
+        String tmp = rightField.getText();
+        return new String (tmp.getBytes(Charset.forName("utf-8")));
     }
     public static String title(){ //тест 2, проверить тайтл
         return TestHelper.driver.getTitle();
