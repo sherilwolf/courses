@@ -1,6 +1,7 @@
 package com.company;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,12 +23,23 @@ public class UzGovUa {
         //UGUFunctions.open();
     }
     @Test
-    public void Smoke() throws InterruptedException {
+    public void Smoke(){
         UGUFunctions.open();
-        UGUFunctions.from("Київ");
-        UGUFunctions.to("Івано-Франківськ");
-        UGUFunctions.date("Червня 2015", 25);
+        UGUFunctions.from("Киев");
+        UGUFunctions.to("Ивано-Франковск");
+        UGUFunctions.date("Июнь 2015", 20);
         UGUFunctions.search();
-        //Assert.assertEquals(2, UGUFunctions.resultsCount());
+        Assert.assertTrue(UGUFunctions.resultsTrain("043 К"));
+        Assert.assertTrue(UGUFunctions.resultsTrain("143 К"));
+        UGUFunctions.clickTrain("043 К");
+        Assert.assertEquals("Маршрут поезда", UGUFunctions.modalName());
+        UGUFunctions.modalClose();
+        UGUFunctions.selectPlaces("043 К", "Купе"); //кликаем выбрать купе в 043 К
+        /*Assert.assertTrue(UGUFunctions.isPlaceEmpty(36)); //проверяем свободно ли место 36
+        Assert.assertEquals(5, UGUFunctions.selectedCoach); //проверяем, что выбран 5-й вагон
+        UGUFunctions.selectPlace(36); //кликаем на 36 место
+        Assert.assertEquals(212.70, UGUFunctions.price()); //проверяем, что цена 212,70
+        UGUFunctions.name("Ann", 36); //заполняем имя для места 36
+        UGUFunctions.lastname("Polikarpova", 36); //заполняем фамилию для места 36*/
     }
 }
