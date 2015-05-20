@@ -1,7 +1,6 @@
 package com.company;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +25,8 @@ public class UzGovUa {
     public void Smoke() throws InterruptedException {
         UGUFunctions.open();
         UGUFunctions.from("Київ");
-        //UGUFunctions.to("Івано-Франківськ");
-        UGUFunctions.date();
+        UGUFunctions.to("Івано-Франківськ");
+        UGUFunctions.date("Червня 2015", 25);
         UGUFunctions.search();
         //Assert.assertEquals(2, UGUFunctions.resultsCount());
     }
